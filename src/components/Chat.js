@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
@@ -17,10 +17,10 @@ const loader = (
 );
 
 const ApibaseURL = "https://api.jugalbandi.ai/query-with-langchain-gpt3-5";
-const UDID = "5f0f570c-a949-11ee-89c9-42004e494300";
+//const UDID = "5f0f570c-a949-11ee-89c9-42004e494300";
 
 const Chatbot = () => {
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+  //const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const uuidNum = process.env.REACT_APP_UUID_NUMBER;
   const notify = () => toast.success("UUID successfully added!");
 
@@ -56,7 +56,6 @@ const Chatbot = () => {
   const [isLoading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     scrollToBottom();
