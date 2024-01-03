@@ -88,7 +88,7 @@ const Chatbot = () => {
 
       removeLoader();
     }
-  }, [isLoading]); //
+  }, [isLoading,messages]); //
 
   const send = (inputValue) => {
     setLoading(true);
