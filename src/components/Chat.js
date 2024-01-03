@@ -3,8 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
 
 const errorMessage =
   "My apologies, I'm not available at the moment, however, feel free to contact our support team.";
@@ -82,9 +81,14 @@ const Chatbot = () => {
       aiMessage(loader, isLoading);
     }
     if (isLoading === false) {
+      //remove typing messages from list
+      const removeLoader = () => {
+        setMessages(messages.filter((message) => message.loading !== true));
+      };
+
       removeLoader();
     }
-  }, [isLoading, removeLoader]); //
+  }, [isLoading]); //
 
   const send = (inputValue) => {
     setLoading(true);
@@ -132,11 +136,6 @@ const Chatbot = () => {
         loading,
       },
     ]);
-  };
-
-  //remove typing messages from list
-  const removeLoader = () => {
-    setMessages(messages.filter((message) => message.loading !== true));
   };
 
   //send a message
@@ -251,13 +250,12 @@ const Chatbot = () => {
         </div>
       </div>
       <svg>
-       
         <symbol id="icon-close" viewBox="0 0 32 32">
           <title>Close</title>
           <path d="M2.624 8.297l2.963-2.963 23.704 23.704-2.963 2.963-23.704-23.704z" />
           <path d="M2.624 29.037l23.704-23.704 2.963 2.963-23.704 23.704-2.963-2.963z" />
         </symbol>
-       
+
         <symbol id="icon-speech" viewBox="0 0 32 32">
           <title>Speech</title>
           <path d="M21.795 5.333h-11.413c-0.038 0-0.077 0-0.114 0l-0.134 0.011v2.796c0.143-0.006 0.273-0.009 0.385-0.009h11.277c0.070 0 7.074 0.213 7.074 7.695 0 5.179-2.956 7.695-9.036 7.695h-3.792c-0.691 0-1.12 0.526-1.38 1.159l-1.387 3.093-1.625 3.77 0.245 0.453h2.56l2.538-5.678h2.837c7.633 0 11.84-3.727 11.84-10.494 0.001-8.564-7.313-10.492-9.875-10.492z" />
