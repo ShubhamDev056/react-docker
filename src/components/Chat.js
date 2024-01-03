@@ -55,6 +55,7 @@ const Chatbot = () => {
   const [isLoading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  
 
   useEffect(() => {
     scrollToBottom();
@@ -86,11 +87,13 @@ const Chatbot = () => {
     }
     if (isLoading === false) {
       removeLoader();
-    }
-  }, [isLoading]); //
+    } 
+  }, [isLoading]);
+  
 
   const send = (inputValue) => {
     setLoading(true);
+    console.log("url",`${ApibaseURL}?query_string=${inputValue}&uuid_number=${uuidNumber}`);
     //call API here
     fetch(`${ApibaseURL}?query_string=${inputValue}&uuid_number=${uuidNumber}`)
       .then((response) => response.json())
