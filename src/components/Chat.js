@@ -75,17 +75,16 @@ const Chatbot = () => {
       },
     ]);
   };
+  //remove typing messages from list
+  const removeLoader = () => {
+    setMessages(messages.filter((message) => message.loading !== true));
+  };
 
   useEffect(() => {
     if (isLoading) {
       aiMessage(loader, isLoading);
     }
     if (isLoading === false) {
-      //remove typing messages from list
-      const removeLoader = () => {
-        setMessages(messages.filter((message) => message.loading !== true));
-      };
-
       removeLoader();
     }
   }, [isLoading]); //
